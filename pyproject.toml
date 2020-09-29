@@ -10,7 +10,9 @@ home-page = "https://github.com/lakeannebrewhouse/aracnid-logger"
 classifiers = ["License :: OSI Approved :: MIT License"]
 description-file = "README.md"
 requires-python = "~=3.8"
-requires = []
+requires = [
+    "slackclient ~=2.9"
+]
 keywords = "logger"
 
 [tools.flit.metadata.requires-extra]
