@@ -3,4 +3,4 @@
 from aracnid_logger.i_logger import Logger
 from aracnid_logger.slack_logger import SlackLogger
 
-__version__ = '1.0.0-alpha.1'
+__version__ = '1.0.0-alpha.2'
