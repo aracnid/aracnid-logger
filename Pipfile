@@ -14,7 +14,7 @@ pylint = "*"
 pytest = "*"
 
 [packages]
-slackclient = "~=2.9"
+slack-bolt = "*"
 
 [requires]
 python_version = "3.8"
