@@ -3,7 +3,10 @@
 import logging
 import os
 
-from slack import WebClient
+try:
+    from slack_bolt import App
+except ImportError as e:
+    pass
 
 from aracnid_logger.i_logger import Logger
 
@@ -22,7 +25,7 @@ class SlackChannelHandler(logging.Handler):
     """Logging handler that sends logs to a Slack Channel.
 
     Environment Variables:
-        SLACK_ACCESS_TOKEN: Access token for Slack.
+        SLACK_BOT_TOKEN: Access token for Slack.
 
     Attributes:
         channel: Slack channel where logs are sent.
@@ -42,13 +45,19 @@ class SlackChannelHandler(logging.Handler):
         if not self.channel:
             raise ValueError('Must supply a "channel" in the logging configuration.')
 
-        # obtain an access token
-        access_token = os.environ.get('SLACK_ACCESS_TOKEN')
+        # obtain access token
+        access_token = os.environ.get('SLACK_BOT_TOKEN')
         if not access_token:
-            raise ValueError('Environmental variable, "SLACK_ACCESS_TOKEN", is not set.')
+            raise ValueError('Environmental variable, "SLACK_BOT_TOKEN", is not set.')
+
+        # obtain signing secret
+        signing_secret = os.environ.get('SLACK_SIGNING_SECRET')
+        if not signing_secret:
+            raise ValueError('Environmental variable, "SLACK_SIGNING_SECRET", is not set.')
 
         # authenticate and get slack client
-        self.client = WebClient(token=access_token)
+        app = App(token=access_token, signing_secret=signing_secret)
+        self.client = app.client
 
     def emit(self, record):
         """Emits log messages.
