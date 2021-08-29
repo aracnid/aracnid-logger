@@ -4,7 +4,7 @@ import os
 
 import pytest
 
-from aracnid_logger import Logger
+from aracnid_logger import Logger, SlackLogger
 
 def test_module_main():
     """Tests that Aracnid Logger was imported successfully.
@@ -118,3 +118,22 @@ def test_setting_formatter_by_default(monkeypatch):
         config_dir=config_dir)
 
     assert logger.formatter == 'default'
+
+def test_config_slack_handler(monkeypatch):
+    """Tests setting the slack handler configuration.
+    """
+    monkeypatch.setenv('LOGGING_CONFIG_FILE', 'logging_config_slack.json')
+    config_dir = os.path.dirname(__file__)
+    logger = SlackLogger('__main__', config_dir=config_dir)
+
+    # assert False
+    assert len(logger.logger.handlers) == 2
+
+def test_config_slack_handler_default_error(monkeypatch):
+    """Tests setting the slack handler channel to 'default' raised error.
+    """
+    monkeypatch.setenv('LOGGING_CONFIG_FILE', 'logging_config_slack_default.json')
+    config_dir = os.path.dirname(__file__)
+
+    with pytest.raises(ValueError):
+        _ = SlackLogger('__main__', config_dir=config_dir)

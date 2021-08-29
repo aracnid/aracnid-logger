@@ -24,6 +24,9 @@ class SlackLogger(Logger):
 class SlackChannelHandler(logging.Handler):
     """Logging handler that sends logs to a Slack Channel.
 
+    The slack channel should be defined in the logging configuration file.
+    If no channel is found, this will raise a ValueError.
+
     Environment Variables:
         SLACK_BOT_TOKEN: Access token for Slack.
 
@@ -41,7 +44,7 @@ class SlackChannelHandler(logging.Handler):
         super().__init__()
 
         # set the channel
-        self.channel = channel
+        self.set_channel(channel)
         if not self.channel:
             raise ValueError('Must supply a "channel" in the logging configuration.')
 
@@ -58,6 +61,19 @@ class SlackChannelHandler(logging.Handler):
         # authenticate and get slack client
         app = App(token=access_token, signing_secret=signing_secret)
         self.client = app.client
+
+    def set_channel(self, channel=None):
+        """Sets the slack handler channel.
+
+        Args:
+            channel: Slack channel where logs are sent.
+        """
+        # set the channel from the argument
+        self.channel = channel
+
+        # process default channel, this will raise an error
+        if self.channel == 'default':
+            self.channel = None
 
     def emit(self, record):
         """Emits log messages.
