@@ -5,7 +5,6 @@
 		}
 	],
 	"settings": {
-		"python.pythonPath": "/home/jason/.local/share/virtualenvs/aracnid-logger-KMwGdtMk/bin/python",
 		"peacock.color": "#f51d89",
 		"workbench.colorCustomizations": {
 			"activityBar.activeBackground": "#f74ea2",
