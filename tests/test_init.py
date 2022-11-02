@@ -1,8 +1,8 @@
 """Test functions for Aracnid Logger import.
 """
-import aracnid_logger
+from aracnid_logger import __version__
 
 def test_version():
     """Tests that Aracnid Logger was imported successfully.
     """
-    assert aracnid_logger.__version__
+    assert __version__
