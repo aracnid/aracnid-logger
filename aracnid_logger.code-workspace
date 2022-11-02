@@ -5,7 +5,27 @@
 		}
 	],
 	"settings": {
-		"python.pythonPath": "/home/jason/.local/share/virtualenvs/aracnid-logger-KMwGdtMk/bin/python"
+		"python.pythonPath": "/home/jason/.local/share/virtualenvs/aracnid-logger-KMwGdtMk/bin/python",
+		"peacock.color": "#f51d89",
+		"workbench.colorCustomizations": {
+			"activityBar.activeBackground": "#f74ea2",
+			"activityBar.background": "#f74ea2",
+			"activityBar.foreground": "#15202b",
+			"activityBar.inactiveForeground": "#15202b99",
+			"activityBarBadge.background": "#7ff40b",
+			"activityBarBadge.foreground": "#15202b",
+			"commandCenter.border": "#e7e7e799",
+			"sash.hoverBorder": "#f74ea2",
+			"statusBar.background": "#f51d89",
+			"statusBar.foreground": "#e7e7e7",
+			"statusBarItem.hoverBackground": "#f74ea2",
+			"statusBarItem.remoteBackground": "#f51d89",
+			"statusBarItem.remoteForeground": "#e7e7e7",
+			"titleBar.activeBackground": "#f51d89",
+			"titleBar.activeForeground": "#e7e7e7",
+			"titleBar.inactiveBackground": "#f51d8999",
+			"titleBar.inactiveForeground": "#e7e7e799"
+		}
 	},
 	"launch": {
 		"version": "0.2.0",
