@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "aracnid-logger"
-version = "1.0.0"
+version = "1.0.1"
 description = "Customization of the Python Logging System"
 authors = ["Jason Romano <aracnid@gmail.com>"]
 license = "MIT"
@@ -14,8 +14,8 @@ python = "^3.10"
 slack-bolt = "~1.14"
 
 [tool.poetry.group.dev.dependencies]
-pylint = "^2.15.5"
-pytest = "^7.2.0"
+pylint = "^2.15"
+pytest = "^7.2"
 
 [build-system]
 requires = ["poetry-core"]
