@@ -70,7 +70,7 @@ class Logger:
             self.logging_path = os.path.join(
                 self.logging_dir,
                 self.logging_filename)
-            with open(self.logging_path, 'rt') as file:
+            with open(self.logging_path, mode='rt', encoding="utf-8") as file:
                 logging_config = json.load(file)
 
             # update the formatter
